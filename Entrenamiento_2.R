@@ -22,6 +22,11 @@ total_consumo_no_renovable <- sum(subset(df_consumo,energia == "No Renovable")$c
 total_costo_renovable <- sum(subset(df_consumo,energia == "Renovable")$costo_total)
 total_costo_no_renovable <- sum(subset(df_consumo,energia == "No Renovable")$costo_total)
 
+mean(subset(df_consumo, energia == "Renovable" )$consumo)
+mean(subset(df_consumo, energia == "No Renovable" )$consumo)
+
+df_consumo$ganancia <- df_consumo$costo_total * 1.1
+
 # PASO 5: resumen
 
 df_costo_ordenado <- df_consumo[order(df_consumo$costo_total, decreasing =TRUE), ]
