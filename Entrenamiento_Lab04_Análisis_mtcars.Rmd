@@ -49,7 +49,7 @@ kable(head(df), caption = "***Primeras filas de mtcars***")
 ### Tabla DT
 
 ```{r}
-DT::datatable(mtcars, options = list(pageLength = 5), rownames = FALSE, caption = "PTabla interactiva de mtcars", filter = 'bottom')
+DT::datatable(mtcars, options = list(pageLength = 5), rownames = FALSE, caption = "Tabla interactiva de mtcars", filter = 'bottom')
 ```
 
 ### Gráfico de dispersión
