@@ -1,0 +1,72 @@
+---
+title: "Análisis exploratorio de mtcars"
+author: "David Fernández"
+date: "2025-04-16"
+output: 
+  html_document:
+    toc: yes
+    toc_depth: 2
+    theme: flatly
+---
+
+```{r setup, echo=TRUE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(knitr)
+library(DT)
+library(ggplot2)
+library(kableExtra)
+library(tidyr)
+```
+
+# Introducción
+
+El presente documento tiene como objetivo realizar un **análisis exploratorio** del conjunto de datos `mtcars`, incluido por defecto en R. A través de este informe:
+
+  - Se presentarán los datos en tablas estáticas e interactivas.
+  - Se generará un gráfico representativo para observar relaciones entre variables.
+  - Se aplicará un estilo personalizado para mejorar la visualización.
+
+**Objetivos principales:**
+
+  1. Familiarizarse con las capacidades de R Markdown para reportes automáticos.
+  2. Aplicar funciones de visualización y resumen de datos.
+  3. Organizar la información de manera clara, estética y reproducible.
+
+# Análisis de datos
+## Carga de datos
+
+```{r}
+data("mtcars")
+df <- as.data.frame(mtcars)
+```
+
+## Análisis de datos con tablas y gráficos
+### Tabla Kable
+```{r}
+kable(head(df), caption = "***Primeras filas de mtcars***")
+```
+
+### Tabla DT
+
+```{r}
+DT::datatable(mtcars, options = list(pageLength = 5), rownames = FALSE, caption = "PTabla interactiva de mtcars", filter = 'bottom')
+```
+
+### Gráfico de dispersión
+
+```{r}
+ggplot(mtcars, aes(x = hp, y = mpg)) +
+  geom_point(color = "blue", size = 3) +
+  geom_smooth(method = "lm", se = FALSE, color = "red") +
+  labs(
+    title = "Relación entre hp y mpg",
+    x = "Caballos de Fuerza (hp)",
+    y = "Millas por Galón (mpg)"
+  ) +
+  theme_minimal()
+```
+
+# Conclusiones
+
+  1.  Observamos una relación inversa entre hp y mpg
+  2.  Las tablas interactivas son muy útiles para grandes cantidades de datos, permitiendote filtrar. A pesar de que en este proyecto se haya realizado tan solo para las 5 primeras filas del dataframe
