@@ -36,6 +36,13 @@ pacf(AirPassengers)
 ##Prueba de Dickey-Fuller aumentada
 adf.test(AirPassengers)
 
+##Diferenciación si no es estacionaria
+serie_diff = diff(AirPassengers)
+plot(serie_diff)
+
+adf.test(serie_diff)
+
+
 #Detección de valores atípicos
 
 boxplot(AirPassengers)
@@ -48,5 +55,5 @@ abline(h = quantile(AirPassengers, 0.95), col = "red", lty = 2)
 #Interpretación
 ##Respecto a la tendencia se aprecia un fuerte crecimiento a lo largo de los años.
 ##Estacionalidad: Hay picos que se repiten cada año sobre los meses de verano
-##Estacionariedad: la serie es estacionaria
+##Estacionariedad: la serie original no es estacionaria
 ##Valores atípicos no encontramos en el boxplot, pero en el autocoorelacion parcial si
